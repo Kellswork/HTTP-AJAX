@@ -1,12 +1,33 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
+import Friends from "./Components/Friends";
 
-function App() {
-  return (
-    <div className="App">
-     <h1>Hello</h1>
-    </div>
-  );
+export default class App extends Component {
+  state = { friends: [], errorMessage: "" };
+
+  getFriendsWithAxios = () => {
+    axios
+      .get("http://localhost:5000/friends")
+      .then(response => {
+        console.log(response.data);
+        this.setState({ friends: response.data });
+      })
+      .catch(error => {
+        this.setState({ errorMessage: error.message });
+      });
+  };
+
+  componentDidMount() {
+    this.getFriendsWithAxios();
+  }
+
+  render() {
+    return (
+      <Friends
+        friends={this.state.friends}
+        errorMessage={this.state.errorMessage}
+      />
+    );
+  }
 }
-
-export default App;
