@@ -3,7 +3,8 @@ import "./App.css";
 import axios from "axios";
 import Friends from "./Components/Friends";
 import Form from "./Components/Form";
-import Header from './Components/Header';
+import Header from "./Components/Header";
+import { Route } from "react-router-dom";
 
 const friendsApi = "http://localhost:5000/friends";
 
@@ -102,21 +103,35 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Friends
-          friends={this.state.friends}
-          errorMessage={this.state.errorMessage}
-          deleteFriend={this.deleteFriend}
-          editFriend={this.editFriend}
+        <Route
+          exact={true}
+          path="/"
+          render={() => (
+            <Friends
+              friends={this.state.friends}
+              errorMessage={this.state.errorMessage}
+              deleteFriend={this.deleteFriend}
+              editFriend={this.editFriend}
+            />
+          )}
         />
-        <Form
-          addNewFriend={this.addNewFriend}
-          nameToGetInput={this.nameToGetInput}
-          ageToGetInput={this.ageToGetInput}
-          emailToGetInput={this.emailToGetInput}
-          friend={friend}
-          handleInputChange={this.handleInputChange}
-          isEditFriend={this.state.editFriend}
-          updateFriend={this.updateFriend}
+        <Route
+          exact
+          path="/addfriend"
+          render={() => {
+            return (
+              <Form
+                addNewFriend={this.addNewFriend}
+                nameToGetInput={this.nameToGetInput}
+                ageToGetInput={this.ageToGetInput}
+                emailToGetInput={this.emailToGetInput}
+                friend={friend}
+                handleInputChange={this.handleInputChange}
+                isEditFriend={this.state.editFriend}
+                updateFriend={this.updateFriend}
+              />
+            );
+          }}
         />
       </div>
     );

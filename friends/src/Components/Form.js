@@ -10,7 +10,7 @@ label {
 
 export default function Form(props) {
   return (
-    <form
+    <form method='#'
       onSubmit={
         props.isEditFriend
           ? event => {

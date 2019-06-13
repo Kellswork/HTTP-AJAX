@@ -22,13 +22,13 @@ const DetailsDiv = styled.div`
   }
 
   p {
-      padding-right: 30px;
+    width: 15%;
   };
   
 `;
 
 const ActionDiv = styled.div`
-  width: 30%;
+  width: 33%;
   display: flex;
   justify-content: flex-end;
   color: #462255;
