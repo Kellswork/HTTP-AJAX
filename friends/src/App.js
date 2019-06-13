@@ -18,6 +18,10 @@ export default class App extends Component {
       });
   };
 
+  componentDidMount() {
+    this.getFriendsWithAxios();
+  }
+
   addNewFriend = event => {
     event.preventDefault();
     const newFriend = {
@@ -35,8 +39,13 @@ export default class App extends Component {
       });
   };
 
-  componentDidMount() {
-    this.getFriendsWithAxios();
+  deleteFriend = (id) => {
+    axios.delete(`http://localhost:5000/friends/${id}`)
+    .then(response => {
+      this.setState({
+        friends: response.data
+      })
+   })
   }
 
   render() {
@@ -45,9 +54,12 @@ export default class App extends Component {
         <Friends
           friends={this.state.friends}
           errorMessage={this.state.errorMessage}
+          deleteFriend = {this.deleteFriend}
         />
         <Form data={this.postNewFriend} />
       </div>
     );
   }
 }
+
+//question, do I have to add the friend object to state? if so why
