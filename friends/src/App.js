@@ -33,9 +33,7 @@ export default class App extends Component {
     axios
       .post("http://localhost:5000/friends", { ...newFriend })
       .then(response => {
-        console.log(response);
-        console.log(response.data);
-        //this.setState({ friends: response.data})
+        this.setState({ friends: response.data})
       });
   };
 
@@ -56,7 +54,7 @@ export default class App extends Component {
           errorMessage={this.state.errorMessage}
           deleteFriend = {this.deleteFriend}
         />
-        <Form data={this.postNewFriend} />
+        <Form addNewFriend={this.addNewFriend} />
       </div>
     );
   }
