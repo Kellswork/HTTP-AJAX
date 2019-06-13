@@ -1,4 +1,12 @@
 import React from "react";
+import styled from "styled-components";
+
+const FormField = styled.form ``;
+
+const InputField = styled.div`
+label {
+    display: block;
+}`;
 
 export default function Form(props) {
   return (
@@ -11,7 +19,8 @@ export default function Form(props) {
           : props.addNewFriend
       }
     >
-      <div>
+
+      <InputField>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -21,9 +30,9 @@ export default function Form(props) {
           ref={props.nameToGetInput}
           required
         />
-      </div>
+      </InputField>
 
-      <div>
+      <InputField>
         <label htmlFor="name">Age</label>
         <input
           type="number"
@@ -33,7 +42,7 @@ export default function Form(props) {
           onChange={props.handleInputChange}
           required
         />
-      </div>
+      </InputField>
 
       <div>
         <label htmlFor="email">Email</label>

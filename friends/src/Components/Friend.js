@@ -1,16 +1,56 @@
 import React from "react";
+import styled from "styled-components";
+
+const Div = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  border: 1px solid #462255;;
+  border-radius: 3px;
+`;
+
+const DetailsDiv = styled.div`
+  width: 65%;
+  display: flex;
+  justify-content: flex-start;
+  color: #462255;
+
+  h4 {
+    width: 25%;
+  }
+
+  p {
+      padding-right: 30px;
+  };
+  
+`;
+
+const ActionDiv = styled.div`
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  color: #462255;
+  .fas {
+      width: 20%;
+  }
+`;
 
 export default function Friend(props) {
   const { friend, deleteFriend, editFriend } = props;
 
   return (
-    <div>
-      <h2>Name: {friend.name}</h2>
-      <p>age: {friend.age}</p>
-      <p>email: {friend.email}</p>
-      <p> id: {friend.id}</p>
-      <button onClick={() => deleteFriend(friend.id)}>Delete Friend</button>
-      <button onClick={() => editFriend(friend.id)}>Edit friend</button>
-    </div>
+    <Div>
+      <DetailsDiv>
+        <h4>{friend.name}</h4>
+        <p>{friend.age}</p>
+        <p>{friend.email}</p>
+      </DetailsDiv>
+      <ActionDiv>
+      <i class="fas fa-trash" onClick={() => deleteFriend(friend.id)}></i>
+      <i class="fas fa-edit" onClick={() => editFriend(friend.id)}></i>
+      </ActionDiv>
+    </Div>
   );
 }

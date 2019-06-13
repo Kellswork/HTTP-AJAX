@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Friends from "./Components/Friends";
 import Form from "./Components/Form";
+import Header from './Components/Header';
 
 const friendsApi = "http://localhost:5000/friends";
 
@@ -100,6 +101,7 @@ export default class App extends Component {
     };
     return (
       <div>
+        <Header />
         <Friends
           friends={this.state.friends}
           errorMessage={this.state.errorMessage}
